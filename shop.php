@@ -134,15 +134,10 @@ include 'includes/connect.php';
                       <a class="nav-link" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item mx-2">
-                      <a class="nav-link active">About</a>
+                      <a class="nav-link">About</a>
                     </li>
                     <li class="nav-item mx-2">
-                      <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Services
-                      </a>
-                    </li>
-                    <li class="nav-item mx-2">
-                      <a class="nav-link">Shop</a>
+                      <a class="nav-link active">Shop</a>
                     </li>
                   </ul>
                   <!-- Login/Sign up -->
@@ -197,8 +192,12 @@ include 'includes/connect.php';
 
       <div class = "cart p-3">
         Items in your cart: 
-        <div id = "cart-qty"></div>
-        <button class = "btn btn-light" style = "float: right; overflow: hidden;">See my cart</button>
+        <?php
+        $itemqty = $shop->get_num_of_items([1]);
+
+        ?>
+        <div id = "cart-qty"><?php echo $itemqty ?></div>
+        <button class = "btn btn-light" style = "float: right; overflow: hidden;"><a href = "cart.php">See my cart</a></button>
       </div>
 
       <!-- Footer -->
