@@ -1,18 +1,117 @@
+<?php
+include 'includes/connect.php';
+
+?>
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>B&M - About Us</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-        <link rel="stylesheet" href="aboutus_style.css">
-    </head>
-    <body class="vh-100 overflow-hidden">
-      <!-- Navbar -->
-      <header>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <style>
+      .btn-circle.btn-xl {
+			width: 40px;
+			height: 40px;
+			border-radius: 100px;
+			font-size: 15px;
+      font-weight: bold;
+		}
+          .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+      }
+
+          .cart {
+      overflow: hidden;
+      background-color: #333;
+      color: white;
+      position: fixed; /* Set the navbar to fixed position */
+      width: 100%; /* Full width */
+      bottom:0
+    }
+
+    </style>
+
+<script>
+  $(document).ready(function(){
+    $(".btn-sub").on("click", function(){
+      // Get the ID attribute
+      var id = $(this).attr("id");
+
+      console.log(id);
+      
+      // Get the quantity element using the ID
+      var qtyElement = $("#qty-" + id);
+
+      // Get the current quantity value and decrement it
+      var currentQty = parseInt(qtyElement.text());
+      var newQty = currentQty - 1;
+
+      // Limit the quantity to a minimum of 1
+      newQty = Math.max(newQty, 1);
+
+      // Set the new quantity value
+      qtyElement.text(newQty);
+    });
+
+    $(".btn-add").on("click", function(){
+      // Get the ID attribute
+      var id = $(this).attr("id");
+
+      console.log(id);
+
+      // Get the quantity element using the ID
+      var qtyElement = $("#qty-" + id);
+
+      // Get the current quantity value and increment it
+      var currentQty = parseInt(qtyElement.text());
+      var newQty = currentQty + 1;
+
+      // Set the new quantity value
+      qtyElement.text(newQty);
+    });
+
+
+    $(document).on("click", ".add-to-cart", function(){
+      console.log("Add to cart clicked.");
+      var productId = $(this).attr("id");
+      var quantity = $("#qty-" + productId).text();
+
+      console.log(productId);
+      console.log(quantity);
+
+      // Make an AJAX request to update the cart
+      $.ajax({
+        url: "ajax_cart.php", // Replace with the actual path to your PHP script
+        method: "POST",
+        data: { productId: productId, quantity: quantity },
+        success: function(response) {
+          console.log(response);
+          // Update the cart-qty element with the new quantity
+          $("#cart-qty").text(response);
+        },
+        error: function() {
+          console.log("Error updating cart.");
+        }
+      });
+    });
+
+
+  });
+</script>
+
+  </head>
+<body>
+    <!-- Navbar -->
+    <header>
         <nav class="navbar navbar-dark bg-dark navbar-expand-lg navbar-fixed-top">
             <div class="container">
               <!-- Logo -->
@@ -37,14 +136,10 @@
                     <li class="nav-item mx-2">
                       <a class="nav-link active">About</a>
                     </li>
-                    <li class="nav-item dropdown mx-2">
-                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <li class="nav-item mx-2">
+                      <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Services
                       </a>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Daycare</a></li>
-                        <li><a class="dropdown-item" href="#">Grooming</a></li>
-                      </ul>
                     </li>
                     <li class="nav-item mx-2">
                       <a class="nav-link">Shop</a>
@@ -60,6 +155,51 @@
             </div>
           </nav>
       </header>
+
+      <div class = "container-xxl p-4 ps-5" style = "background-color: beige">
+        <div class = "row align-items-center">
+            <div class = "col-sm-7">
+                <h1 class = "h1" style = "font-weight: bold">Wide Variety of High Quality Pet's Care Waiting For You!</h1>
+            </div>
+            <div class = "col-sm-5">
+                <img src = "dog-shop.png" style = "width: 20rem">
+            </div>
+        </div>
+      </div>
+
+      <div class = "p-5">
+        <h1 style = "text-align: center; font-weight: bold">Our Products</h1>
+        <div class = "row m-3 shop-list" style = "box-shadow: 0px 0px 10px rgb(181, 181, 181); border-radius: 25px">
+          <!--list produk ditaruh di sini-->
+          <?php foreach ($shop->show_product()->fetchAll(PDO::FETCH_ASSOC) as $data): ?>
+    <div class="col-sm-6 col-md-4 m-3" style="background-color: rgb(223, 223, 223); border-radius: 20px">
+        <img src="<?php echo $data["img"]; ?>" class="center">
+        <h5 style="text-align: center"><?php echo $data["name"]; ?></h5>
+        <p><?php echo $data["dsc"]; ?></p>
+        <h5><?php echo $data["price"]; ?></h5>
+        <div class="row p-3">
+            <div class="col-4">
+                <button type="button" class="btn btn-dark btn-circle btn-xl btn-sub" id = "<?php echo $data["id"]; ?>">-</button>
+            </div>
+            <div class="col-4">
+                <p class = "qty" id="qty-<?php echo $data["id"]; ?>">1</p>
+            </div>
+            <div class="col-4">
+                <button type="button" class="btn btn-dark btn-circle btn-xl btn-add" id = "<?php echo $data["id"]; ?>">+</button>
+            </div>
+        </div>
+        <button class="m-3 btn btn-dark add-to-cart" id = "<?php echo $data["id"]; ?>">Add To Cart</button>
+    </div>
+<?php endforeach; ?>
+ 
+        </div>
+      </div>
+
+      <div class = "cart p-3">
+        Items in your cart: 
+        <div id = "cart-qty"></div>
+        <button class = "btn btn-light" style = "float: right; overflow: hidden;">See my cart</button>
+      </div>
 
       <!-- Footer -->
       <footer class="footer-bs text-center bg-body-tertiary text-lg-start">
@@ -141,5 +281,5 @@
         </div>
         </div>
       </footer>
-    </body>
+</body>
 </html>
