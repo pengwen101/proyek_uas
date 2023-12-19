@@ -24,7 +24,7 @@
             if(mysqli_num_rows($verify_email) != 0){
                 echo "<div class='message'>
                         <p>This email is used. Try another one please!</p>
-                      </div><br>";
+                      </div>";
                 echo "<a href='javascript:self.history.back()'><button class='btn'>Back</button>";
             } else if($confirmpw != $password) {
                 echo "<div class='message'>
