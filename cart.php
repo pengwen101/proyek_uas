@@ -1,10 +1,12 @@
 <?php 
- 
-//  if (isset($_SESSION["username"])) {
-//      $username = $_SESSION["username"];
-//  } else {
-//      header("location: login.php");
-//  }
+
+session_start();
+
+if (isset($_GET["id_cust"]) && !empty($_GET["id_cust"])) {
+  $id_cust = $_GET["id_cust"];
+} else {
+  header("Location: login.php");
+}
 
 include 'includes/connect.php';
 
@@ -165,7 +167,7 @@ include 'includes/connect.php';
                   <!-- Login/Sign up -->
                   <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">
                     <a href=""><i class="fa-solid fa-cart-shopping fs-5"></i></a>
-                    <a href="login.php" class="signup text-decoration-none px-3 py-1 rounded-4">Login</a>
+                    <a href="login.php" class="signup text-decoration-none px-3 py-1 rounded-4">Logout</a>
                   </div>
                 </div>
               </div>
@@ -195,7 +197,7 @@ include 'includes/connect.php';
                     <?php
                       include("config.php");
 
-                      $query = mysqli_query($con, "SELECT cart.*, product.* FROM cart INNER JOIN product ON cart.product_id = product.id WHERE id_cust = '1'") or die("Error Occured");
+                      $query = mysqli_query($con, "SELECT cart.*, product.* FROM cart INNER JOIN product ON cart.product_id = product.id WHERE id_cust = '$id_cust'") or die("Error Occured");
 
                       if(mysqli_num_rows($query) > 0) {
                         while($fetch = mysqli_fetch_assoc($query)) {
@@ -204,7 +206,7 @@ include 'includes/connect.php';
 
 <?php foreach ($shop->show_cart([1])->fetchAll(PDO::FETCH_ASSOC) as $data): ?>
   <tr>
-    <td><img src="<?php echo $data["img"]; ?>" class="center"></td>
+    <td><img src="image/<?php echo $data["img"]; ?>" class="center"></td>
     <td><h5 style="text-align: center"><?php echo $data["name"]; ?></h5></td>
     <td><p><?php echo $data["price"]; ?></p></td>
     <td>

@@ -258,7 +258,7 @@ header {
           <!--list produk ditaruh di sini-->
           <?php foreach ($shop->show_product()->fetchAll(PDO::FETCH_ASSOC) as $data): ?>
     <div class="col-sm-6 col-md-4 m-3" style="background-color: rgb(223, 223, 223); border-radius: 20px">
-        <img src="<?php echo $data["img"]; ?>" class="center">
+        <img src="image/<?php echo $data["img"]; ?>" class="center">
         <h5 style="text-align: center"><?php echo $data["name"]; ?></h5>
         <p><?php echo $data["dsc"]; ?></p>
         <h5><?php echo $data["price"]; ?></h5>
