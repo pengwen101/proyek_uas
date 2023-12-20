@@ -31,7 +31,7 @@
                 $_SESSION['password'] = $row['password'];
                 $_SESSION['id_cust'] = $row['id_cust'];
             } else {
-                echo "<div class='message'>
+                echo "<div class='wrapper'>
                     <p>Incorrect Username or Password</p><br>
                     <a href='login.php'><button class='btn'>Back</button>
                 </div>";
