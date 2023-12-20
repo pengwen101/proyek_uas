@@ -2,12 +2,19 @@
 include 'includes/connect.php';
 include 'config.php';
 
-session_start();
+session_start(); 
 
-$id_cust = $_SESSION['id_cust'];
+// Check if the user is logged in
+// if (!isset($_SESSION['id_cust'])) {
+//     // Redirect to the login page or handle the case where the user is not logged in
+//     header("Location: login.php");
+//     exit();
+// }
 
 if (isset($_GET["id_cust"]) && !empty($_GET["id_cust"])) {
-  $id_cust = $_GET["id_cust"];
+    $id_cust = $_GET["id_cust"];
+} else {
+  header("Location: login.php");
 }
 
 ?>
@@ -43,8 +50,8 @@ if (isset($_GET["id_cust"]) && !empty($_GET["id_cust"])) {
       overflow: hidden;
       background-color: #333;
       color: white;
-      position: fixed; /* Set the navbar to fixed position */
-      width: 100%; /* Full width */
+      position: fixed; 
+      width: 100%; 
       bottom:0
     }
 
@@ -236,8 +243,19 @@ header {
                   </ul>
                   <!-- Login/Sign up -->
                   <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">
-                    <a href="cart.php"><i class="fa-solid fa-cart-shopping fs-5"></i></a>
-                    <a href="login.php" class="signup text-decoration-none px-3 py-1 rounded-4">Login</a>
+                  <?php
+
+                    echo "<a href='cart.php?id_cust=$id_cust'><i class='fa-solid fa-cart-shopping fs-5'></i></a>";
+
+                    if(isset($_SESSION['id_cust'])) {
+                    echo "<a href='login.php' class='signup text-decoration-none px-3 py-1 rounded-4'>Logout</a>";
+
+                    session_destroy();
+                    } else {
+                    echo "<a href='login.php' class='signup text-decoration-none px-3 py-1 rounded-4'>Login</a>";
+                    }
+
+                  ?>
                   </div>
                 </div>
               </div>
@@ -248,7 +266,7 @@ header {
       <div id="top">.</div>
       <a href="#top" class="gotop"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
 
-      <div class = "container-xxl p-4 ps-5" style = "background-color: beige; margin-top: 0cm;">
+      <div class = "container-xxl p-4 ps-5" style = "background-color: beige; margin-top: 1cm;">
         <div class = "row align-items-center">
             <div class = "col-sm-7">
                 <h1 class = "h1" style = "font-weight: bold">Wide Variety of High Quality Pet's Care Waiting For You!</h1>
@@ -291,6 +309,7 @@ header {
         Items in your cart: 
         <?php
 
+        // $num_of_items = $shop ->get_num_of_items($id_cust);
         $num_of_items = $shop ->get_num_of_items([1]);
         
         ?>

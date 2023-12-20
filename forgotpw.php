@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Bark and Meow - Forgot Password</title>
+        <title>B&M - Forgot Password</title>
         <link rel="stylesheet" href="signup_style.css">
         <link rel="stylesheet" href="assets/css/datepicker.min.css">
         <link rel="icon" href="image/bnm_logo.jpg" type="./image/jpg">

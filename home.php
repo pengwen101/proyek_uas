@@ -287,9 +287,11 @@ $id_cust = $_SESSION['id_cust'];
                   <li class="nav-item mx-2">
                     <a class="nav-link" href="aboutus.php">About</a>
                   </li>
-                  <li class="nav-item mx-2">
-                    <a class="nav-link" href="shop.php">Shop</a>
-                  </li>
+                  <?php echo
+                  "<li class='nav-item mx-2'>
+                    <a class='nav-link' href='shop.php?id_cust=$id_cust'>Shop</a>
+                  </li>"
+                  ?>
                 </ul>
                 <!-- Login/Sign up -->
                 <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">

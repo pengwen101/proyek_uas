@@ -18,7 +18,7 @@ include 'includes/connect.php';
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>B&M - About Us</title>
+        <title>B&M - Cart</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
@@ -29,39 +29,30 @@ include 'includes/connect.php';
         <script>
   $(document).ready(function(){
     $(".btn-sub").on("click", function(){
-      // Get the ID attribute
       var id = $(this).attr("id");
 
       console.log(id);
-      
-      // Get the quantity element using the ID
+
       var qtyElement = $("#qty-" + id);
 
-      // Get the current quantity value and decrement it
       var currentQty = parseInt(qtyElement.text());
       var newQty = currentQty - 1;
 
-      // Limit the quantity to a minimum of 1
       newQty = Math.max(newQty, 1);
 
-      // Set the new quantity value
       qtyElement.text(newQty);
     });
 
     $(".btn-add").on("click", function(){
-      // Get the ID attribute
       var id = $(this).attr("id");
 
       console.log(id);
 
-      // Get the quantity element using the ID
       var qtyElement = $("#qty-" + id);
 
-      // Get the current quantity value and increment it
       var currentQty = parseInt(qtyElement.text());
       var newQty = currentQty + 1;
 
-      // Set the new quantity value
       qtyElement.text(newQty);
     });
 
@@ -74,14 +65,12 @@ include 'includes/connect.php';
       console.log(productId);
       console.log(quantity);
 
-      // Make an AJAX request to update the cart
       $.ajax({
-        url: "ajax_cart.php", // Replace with the actual path to your PHP script
+        url: "ajax_cart.php",
         method: "POST",
         data: { productId: productId, quantity: quantity },
         success: function(response) {
           console.log(response);
-          // Update the cart-qty element with the new quantity
           $("#cart-qty").text(response);
         },
         error: function() {
@@ -94,9 +83,8 @@ include 'includes/connect.php';
       var productId = $(this).attr("id");
       var quantity = $("#qty-" + productId).text();
 
-      // Make an AJAX request to update the cart
       $.ajax({
-        url: "ajax_update.php", // Replace with the actual path to your PHP script
+        url: "ajax_update.php",
         method: "POST",
         data: { productId: productId, quantity: quantity },
         success: function(response) {
@@ -108,17 +96,13 @@ include 'includes/connect.php';
       });
     });
 
-    //
-
-
     $(".btn-del").on("click", function(){
       var cartId = $(this).attr("id");
 
       console.log(cartId);
 
-      // Make an AJAX request to update the cart
       $.ajax({
-        url: "ajax_del.php", // Replace with the actual path to your PHP script
+        url: "ajax_del.php",
         method: "POST",
         data: { cartId: cartId },
         success: function(response) {

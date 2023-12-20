@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Bark and Meow - Login</title>
+        <title>B&M - Login</title>
         <link rel="stylesheet" href="style.css">
         <link rel="icon" href="image/bnm_logo.jpg" type="./image/jpg">
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -29,6 +29,8 @@
                 $_SESSION['phone_num'] = $row['phone_num'];
                 $_SESSION['password'] = $row['password'];
                 $_SESSION['id_cust'] = $row['id_cust'];
+
+                header("Location: home.php");
             } else {
                 echo "<div class='wrapper'>
                     <p>Incorrect Username or Password</p><br>
@@ -36,14 +38,11 @@
                 </div>";
             }
 
-            if(isset($_SESSION['valid'])){
-                header("Location: home.php");
-            } 
         } else {
     ?>
         <div class="wrapper">
             <form action="" method="post">
-                <h1 class="font">Login</h1>
+                <h1>Login</h1>
                 <div class="input-box">
                     <input type="text" placeholder="Username" id="username" name="username" autocomplete="off" required>
                     <i class='bx bxs-user'></i>

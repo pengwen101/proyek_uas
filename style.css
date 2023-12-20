@@ -5,15 +5,6 @@
     font-family:Georgia, 'Times New Roman', Times, serif;
 }
 
-@font-face {
-    font-family: fox;
-    src: url(Harvest\ Season.otf);
-}
-
-.font {
-    font-family: fox;
-}
-
 body {
     display: flex;
     justify-content: center;
