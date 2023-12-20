@@ -1,6 +1,6 @@
 <?php
 
-include_once 'config.php';
+include_once 'config_paypal.php';
 
 class PaypalCheckout {
     public $paypalAuthAPI = PAYPAL_SANDBOX?'https://api-m.sandbox.paypal.com/v1/oauth2/token':'https://api-m.paypal.com/v1/oauth2/token';

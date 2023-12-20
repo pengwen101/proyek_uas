@@ -1,7 +1,7 @@
 <?php
 
 // Include the configuration file
-require_once 'config.php';
+require_once 'config_paypal.php';
 
 // Include the database connection file
 include_once 'dbConnect.php';

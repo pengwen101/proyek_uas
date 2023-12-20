@@ -1,6 +1,6 @@
 <?php
 
-require_once 'config.php';
+require_once 'config_paypal.php';
 
 // Connect with the database
 $db = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);

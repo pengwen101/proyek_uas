@@ -1,6 +1,16 @@
 <?php
 
-$itemNumber = "DP12345"; 
+session_start();
+
+if (isset($_GET["id_cust"]) && !empty($_GET["id_cust"])) {
+  $id_cust = $_GET["id_cust"];
+} else {
+  header("Location: login.php");
+}
+
+include '../config.php';
+
+$itemNumber = "SELECT "; 
 $itemName = "Demo Product"; 
 $itemPrice = 75;  
 
