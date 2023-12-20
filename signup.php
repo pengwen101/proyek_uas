@@ -6,6 +6,7 @@
         <title>Bark and Meow - Sign Up</title>
         <link rel="stylesheet" href="signup_style.css">
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="icon" href="image/bnm_logo.jpg" type="./image/jpg">
     </head>
     <body>
         <?php

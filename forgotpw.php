@@ -6,6 +6,7 @@
         <title>Bark and Meow - Forgot Password</title>
         <link rel="stylesheet" href="signup_style.css">
         <link rel="stylesheet" href="assets/css/datepicker.min.css">
+        <link rel="icon" href="image/bnm_logo.jpg" type="./image/jpg">
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     </head>
     <body>
