@@ -104,6 +104,26 @@ header {
     z-index: 9999;
 }
 
+.gotop {
+        position: fixed;
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        background-color: #ff7b00;
+        bottom: 30px;
+        right: 30px;
+        text-decoration: none;
+        text-align: center;
+        line-height: 40px;
+        color: white;
+        font-size: 18px;
+        z-index: 9999;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
     </style>
 
 <script>
