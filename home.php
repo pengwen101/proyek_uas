@@ -380,7 +380,7 @@ header {
                   <p class="card-text disc-size">Get a special discount as big as 10% for your pets whose born at the first month of the year, January!</p>
                   <p class="card-text disc-size">* Valid for all kind of transactions!</p>
                 </div>
-                <div class="card-footer bg-transparent code">Code: JKFTY24</div>
+                <div class="card-footer bg-transparent code">available for in-store purchase only</div>
               </div>
             </div>
             <div class="col-3" style="display: grid; justify-content: center;">
@@ -390,7 +390,7 @@ header {
                   <p class="card-text disc-size">As we celebrate the upcoming year of 2024, we will give a special discount as much as 15% for those who were turning 24 months old!</p>
                   <p class="card-text disc-size">* Valid for all kind of transactions!</p>
                 </div>
-                <div class="card-footer bg-transparent code">Code: TFMO012</div>
+                <div class="card-footer bg-transparent code">available for in-store purchase only</div>
               </div>
             </div>
             <div class="col-3" style="display: grid; justify-content: center;">
@@ -400,7 +400,7 @@ header {
                   <p class="card-text disc-size">Enjoy a special discount as much as 10% for the first visiters in the shop!</p>
                   <p class="card-text disc-size">* Valid for all kind of transactions!</p>
                 </div>
-                <div class="card-footer bg-transparent code">Code: NBMVI24</div>
+                <div class="card-footer bg-transparent code">available for in-store purchase only</div>
               </div>
             </div>
             <div class="col-3" style="display: grid; justify-content: center;">
@@ -410,7 +410,7 @@ header {
                   <p class="card-text disc-size">Special discount for all pets who visit the petshop as much as 5%, in celebration of our 5th anniversary.</p>
                   <p class="card-text disc-size">* Valid for all kind of transactions!</p>
                 </div>
-                <div class="card-footer bg-transparent code">Code: FTHAV5</div>
+                <div class="card-footer bg-transparent code">available for in-store purchase only</div>
               </div>
             </div>
           </div>
