@@ -38,10 +38,6 @@
             }
 
             if(isset($_SESSION['valid'])){
-                if(isset($_POST['remember_me'])){
-                    setcookie('username',$_POST['username'],time() + (60*60*24));
-                    setcookie('email',$_POST['email'],time() + (60*60*24));
-                }
                 header("Location: home.php");
             } 
         } else {

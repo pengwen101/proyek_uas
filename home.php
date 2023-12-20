@@ -55,13 +55,6 @@ $id_cust = $_SESSION['id_cust'];
         background-color: #fffaf2;
       }
 
-      /* header {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 9999;
-      } */
-
       .card-title {
         margin-top: 20px;
         margin-bottom: 60px;
