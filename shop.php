@@ -13,6 +13,7 @@ include 'includes/connect.php';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="icon" href="image/bnm_logo.jpg" type="./image/jpg">
 
     <style>
       .btn-circle.btn-xl {
@@ -37,6 +38,92 @@ include 'includes/connect.php';
       width: 100%; /* Full width */
       bottom:0
     }
+
+    nav > div a {
+    color: white;
+}
+
+nav > div a:hover {
+    color: pink;
+    transition: all 0.5s;
+}
+
+nav > div .signup {
+    background-color: blue;
+    color: #fff;
+}
+
+nav > div .signup:hover {
+    background-color: cyan;
+    color: black;
+    transition: all 0.5s;
+}
+
+.offcanvas-title {
+    font-weight: bold;
+}
+
+.navbar .navbar-nav .nav-link:hover {
+    color: pink;
+}  
+
+.navbar .navbar-nav .nav-link {
+  padding: 0.6em;
+  font-size: 1.2em;
+}
+
+.navbar .navbar-brand {
+  padding: 0 0.6em;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+footer {
+    background: linear-gradient(to right, #581845, #900C3F, #C70039, #FF5733, #FFC300);
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: white;
+}
+
+@media only screen and (min-width: 992px) {
+    .navbar {
+        padding: 0;
+    }
+    .navbar .navbar-nav .nav-link {
+        padding: 1em 0.7em;
+    }
+    .navbar .navbar-brand {
+        padding: 0 0.8em;
+    }
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+}
+
+.gotop {
+        position: fixed;
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        background-color: #ff7b00;
+        bottom: 100px;
+        right: 30px;
+        text-decoration: none;
+        text-align: center;
+        line-height: 40px;
+        color: white;
+        font-size: 18px;
+        z-index: 9999;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
 
     </style>
 
@@ -115,7 +202,7 @@ include 'includes/connect.php';
         <nav class="navbar navbar-dark bg-dark navbar-expand-lg navbar-fixed-top">
             <div class="container">
               <!-- Logo -->
-              <a class="navbar-brand fs-4" href="#">Bark & Meow <i class="fa-solid fa-paw"></i></a>
+              <a class="navbar-brand fs-4" href="home.php">Bark & Meow <i class="fa-solid fa-paw"></i></a>
               <!-- Toggle Button -->
               <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                 <span class="navbar-toggler-icon"></span>
@@ -131,10 +218,10 @@ include 'includes/connect.php';
                 <div class="offcanvas-body d-flex flex-column flex-lg-row p-4 p-lg-0">
                   <ul class="navbar-nav justify-content-center align-items-center flex-grow-1 pe-3">
                     <li class="nav-item mx-2">
-                      <a class="nav-link" aria-current="page" href="#">Home</a>
+                      <a class="nav-link" aria-current="page" href="home.php">Home</a>
                     </li>
                     <li class="nav-item mx-2">
-                      <a class="nav-link">About</a>
+                      <a class="nav-link" href="aboutus.php">About</a>
                     </li>
                     <li class="nav-item mx-2">
                       <a class="nav-link active">Shop</a>
@@ -142,8 +229,8 @@ include 'includes/connect.php';
                   </ul>
                   <!-- Login/Sign up -->
                   <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">
-                    <a href=""><i class="fa-solid fa-cart-shopping fs-5"></i></a>
-                    <a href="" class="signup text-decoration-none px-3 py-1 rounded-4">Login</a>
+                    <a href="cart.php"><i class="fa-solid fa-cart-shopping fs-5"></i></a>
+                    <a href="login.php" class="signup text-decoration-none px-3 py-1 rounded-4">Login</a>
                   </div>
                 </div>
               </div>
@@ -151,27 +238,30 @@ include 'includes/connect.php';
           </nav>
       </header>
 
-      <div class = "container-xxl p-4 ps-5" style = "background-color: beige">
+      <div id="top">.</div>
+      <a href="#top" class="gotop"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+
+      <div class = "container-xxl p-4 ps-5" style = "background-color: beige; margin-top: 1.1cm;">
         <div class = "row align-items-center">
             <div class = "col-sm-7">
                 <h1 class = "h1" style = "font-weight: bold">Wide Variety of High Quality Pet's Care Waiting For You!</h1>
             </div>
             <div class = "col-sm-5">
-                <img src = "dog-shop.png" style = "width: 20rem">
+                <img src = "image/dog-shop.png" style = "width: 20rem">
             </div>
         </div>
       </div>
 
       <div class = "p-5">
         <h1 style = "text-align: center; font-weight: bold">Our Products</h1>
-        <div class = "row m-3 shop-list" style = "box-shadow: 0px 0px 10px rgb(181, 181, 181); border-radius: 25px">
+        <div class = "row m-3 shop-list" style = "box-shadow: 0px 0px 10px rgb(181, 181, 181); border-radius: 25px; justify-content: center;">
           <!--list produk ditaruh di sini-->
           <?php foreach ($shop->show_product()->fetchAll(PDO::FETCH_ASSOC) as $data): ?>
-    <div class="col-sm-6 col-md-4 m-3" style="background-color: rgb(223, 223, 223); border-radius: 20px">
-        <img src="<?php echo $data["img"]; ?>" class="center">
+    <div class="col-sm-6 col-md-4 m-3" style="background-color: rgb(223, 223, 223); border-radius: 20px; display: grid; justify-content: center;">
+        <img src="image/<?php echo $data["img"]; ?>" class="center" style="margin-bottom: 10px;">
         <h5 style="text-align: center"><?php echo $data["name"]; ?></h5>
-        <p><?php echo $data["dsc"]; ?></p>
-        <h5><?php echo $data["price"]; ?></h5>
+        <center p><?php echo $data["dsc"]; ?></p>
+        <h5>Rp <?php echo $data["price"]; ?></h5>
         <div class="row p-3">
             <div class="col-4">
                 <button type="button" class="btn btn-dark btn-circle btn-xl btn-sub" id = "<?php echo $data["id"]; ?>">-</button>
@@ -190,14 +280,10 @@ include 'includes/connect.php';
         </div>
       </div>
 
-      <div class = "cart p-3">
+      <div class = "cart p-3" style="z-index: 9999;">
         Items in your cart: 
-        <?php
-        $itemqty = $shop->get_num_of_items([1]);
-
-        ?>
-        <div id = "cart-qty"><?php echo $itemqty ?></div>
-        <button class = "btn btn-light" style = "float: right; overflow: hidden;"><a href = "cart.php">See my cart</a></button>
+        <div id = "cart-qty"></div>
+        <a href="cart.php" class = "btn btn-light" style = "float: right; overflow: hidden;">See my cart</a>
       </div>
 
       <!-- Footer -->
@@ -237,7 +323,7 @@ include 'includes/connect.php';
                   <span class="fa-li"><i class="fas fa-solid fa-location-dot"></i></span><span class="ms-2">New York, NY 10012, US</span>
                 </li>
                 <li class="mb-3">
-                  <span class="fa-li"><i class="fas fa-envelope"></i></span><span class="ms-2">info@example.com</span>
+                  <span class="fa-li"><i class="fas fa-envelope"></i></span><span class="ms-2">barknmeow@example.com</span>
                 </li>
                 <li class="mb-3">
                   <span class="fa-li"><i class="fas fa-phone"></i></span><span class="ms-2">+ 01 234 567 88</span>

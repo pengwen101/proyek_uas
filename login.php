@@ -8,7 +8,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Bark and Meow - Login</title>
         <link rel="stylesheet" href="style.css">
+        <link rel="icon" href="image/bnm_logo.jpg" type="./image/jpg">
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
     <?php
@@ -58,17 +60,28 @@
                 </div>
 
                 <div class="remember-forgot">
-                    <label><input type="checkbox" name="remember_me">Remember me</label>
+                    <label><input type="checkbox" name="" onclick="show()">Show password</label>
                     <a href="forgotpw.php">Forgot password?</a>
                 </div>
 
                 <button type="submit" class="btn" id="submit" name="submit">Login</button>
 
                 <div class="register-link">
-                    <p>Don't have an account? <a href="signup.php">Register</a></p>
+                    <p>Don't have an account? <a href="signup.php">Register</a></p><br>
+                    <p><a href="home.php">Back to Home <i class="fa fa-home"></i></a></p>
                 </div>
             </form>
         </div>
+        <script type="text/javascript">
+            function show() {
+                var show = document.getElementById('password');
+                if (show.type == 'password') {
+                    show.type = 'text';
+                } else {
+                    show.type = 'password';
+                }
+            }
+        </script>
         <?php } ?>
     </body>
 </html>
