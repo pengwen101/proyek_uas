@@ -36,7 +36,7 @@ class Shop{
     
 
     public function show_product(){
-        $show_product = "SELECT * FROM `product` WHERE `type` = 0";
+        $show_product = "SELECT * FROM `product`";
         $show_product = $this->db->prepare($show_product);
         $show_product->execute();
 
