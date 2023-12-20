@@ -257,11 +257,11 @@ header {
         <div class = "row m-3 shop-list" style = "box-shadow: 0px 0px 10px rgb(181, 181, 181); border-radius: 25px; justify-content: center;">
           <!--list produk ditaruh di sini-->
           <?php foreach ($shop->show_product()->fetchAll(PDO::FETCH_ASSOC) as $data): ?>
-    <div class="col-sm-6 col-md-4 m-3" style="background-color: rgb(223, 223, 223); border-radius: 20px; display: grid; justify-content: center;">
-        <img src="image/<?php echo $data["img"]; ?>" class="center" style="margin-bottom: 10px;">
+    <div class="col-sm-6 col-md-4 m-3" style="background-color: rgb(223, 223, 223); border-radius: 20px">
+        <img src="<?php echo $data["img"]; ?>" class="center">
         <h5 style="text-align: center"><?php echo $data["name"]; ?></h5>
-        <center p><?php echo $data["dsc"]; ?></p>
-        <h5>Rp <?php echo $data["price"]; ?></h5>
+        <p><?php echo $data["dsc"]; ?></p>
+        <h5><?php echo $data["price"]; ?></h5>
         <div class="row p-3">
             <div class="col-4">
                 <button type="button" class="btn btn-dark btn-circle btn-xl btn-sub" id = "<?php echo $data["id"]; ?>">-</button>
@@ -282,7 +282,12 @@ header {
 
       <div class = "cart p-3" style="z-index: 9999;">
         Items in your cart: 
-        <div id = "cart-qty"></div>
+        <?php
+
+        $num_of_items = $shop ->get_num_of_items([1]);
+        
+        ?>
+        <div id = "cart-qty"><?php echo $num_of_items?></div>
         <a href="cart.php" class = "btn btn-light" style = "float: right; overflow: hidden;">See my cart</a>
       </div>
 

@@ -6,6 +6,8 @@
 //      header("location: login.php");
 //  }
 
+include 'includes/connect.php';
+
 ?>
 
 
@@ -20,7 +22,114 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
         <link rel="stylesheet" href="cart_style.css">
-        <link rel="icon" href="image/bnm_logo.jpg" type="./image/jpg">
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+        <script>
+  $(document).ready(function(){
+    $(".btn-sub").on("click", function(){
+      // Get the ID attribute
+      var id = $(this).attr("id");
+
+      console.log(id);
+      
+      // Get the quantity element using the ID
+      var qtyElement = $("#qty-" + id);
+
+      // Get the current quantity value and decrement it
+      var currentQty = parseInt(qtyElement.text());
+      var newQty = currentQty - 1;
+
+      // Limit the quantity to a minimum of 1
+      newQty = Math.max(newQty, 1);
+
+      // Set the new quantity value
+      qtyElement.text(newQty);
+    });
+
+    $(".btn-add").on("click", function(){
+      // Get the ID attribute
+      var id = $(this).attr("id");
+
+      console.log(id);
+
+      // Get the quantity element using the ID
+      var qtyElement = $("#qty-" + id);
+
+      // Get the current quantity value and increment it
+      var currentQty = parseInt(qtyElement.text());
+      var newQty = currentQty + 1;
+
+      // Set the new quantity value
+      qtyElement.text(newQty);
+    });
+
+
+    $(document).on("click", ".add-to-cart", function(){
+      console.log("Add to cart clicked.");
+      var productId = $(this).attr("id");
+      var quantity = $("#qty-" + productId).text();
+
+      console.log(productId);
+      console.log(quantity);
+
+      // Make an AJAX request to update the cart
+      $.ajax({
+        url: "ajax_cart.php", // Replace with the actual path to your PHP script
+        method: "POST",
+        data: { productId: productId, quantity: quantity },
+        success: function(response) {
+          console.log(response);
+          // Update the cart-qty element with the new quantity
+          $("#cart-qty").text(response);
+        },
+        error: function() {
+          console.log("Error updating cart.");
+        }
+      });
+    });
+
+    $(".btn-update").on("click", function(){
+      var productId = $(this).attr("id");
+      var quantity = $("#qty-" + productId).text();
+
+      // Make an AJAX request to update the cart
+      $.ajax({
+        url: "ajax_update.php", // Replace with the actual path to your PHP script
+        method: "POST",
+        data: { productId: productId, quantity: quantity },
+        success: function(response) {
+          alert("jumlah berhasil diupdate")
+        },
+        error: function() {
+          console.log("Error updating cart.");
+        }
+      });
+    });
+
+    //
+
+
+    $(".btn-del").on("click", function(){
+      var cartId = $(this).attr("id");
+
+      console.log(cartId);
+
+      // Make an AJAX request to update the cart
+      $.ajax({
+        url: "ajax_del.php", // Replace with the actual path to your PHP script
+        method: "POST",
+        data: { cartId: cartId },
+        success: function(response) {
+          alert("Produk berhasil dihapus.");
+        },
+        error: function() {
+          console.log("Error deleting cart.");
+        }
+      });
+    });
+
+  });
+</script>
     </head>
     <body class="vh-100">
       <!-- Navbar -->
@@ -93,19 +202,29 @@
 
                     ?>
 
-                      <tr>
-                        <td><img src="image/<?php echo $fetch['product_img']; ?>" height="150"></td>
-                        <td><?php echo $fetch['product_name']; ?></td>
-                        <td><?php echo $fetch['product_price']; ?></td>
-                        <td>
-                          <form action="" method="post">
-                            <input type="hidden" name="cart_id" value="<?php echo $fetch_cart['cart_id']; ?>">
-                            <input type="number" min="1" name="qty" value="<?php echo $fetch_cart['quantity']; ?>">
-                            <input type="submit" name="update" value="Update" class="option-btn">
-                        </td>
-                        <td>$<?php echo $sub_total = number_format($fetch['product_price'] * $fetch['qty']) ?></td>
-                        <td><a href="" class="btn btn-danger btn-sm">Delete</a></td>
-                      </tr>
+<?php foreach ($shop->show_cart([1])->fetchAll(PDO::FETCH_ASSOC) as $data): ?>
+  <tr>
+    <td><img src="<?php echo $data["img"]; ?>" class="center"></td>
+    <td><h5 style="text-align: center"><?php echo $data["name"]; ?></h5></td>
+    <td><p><?php echo $data["price"]; ?></p></td>
+    <td>
+    <div class="row p-3">
+            <div class="col-4">
+                <button type="button" class="btn btn-dark btn-circle btn-xl btn-sub" id = "<?php echo $data["id"]; ?>">-</button>
+            </div>
+            <div class="col-4">
+                <p class = "qty" id="qty-<?php echo $data["id"]; ?>"><?php echo $data["qty"]; ?></p>
+            </div>
+            <div class="col-4">
+                <button type="button" class="btn btn-dark btn-circle btn-xl btn-add" id = "<?php echo $data["id"]; ?>">+</button>
+            </div>
+        </div>
+        <button class="m-3 btn btn-primary btn-update" id = "<?php echo $data["id"]; ?>">Update</button></td>
+    </td>
+    <td><?php echo $data["price"] * $data["qty"];?></td>
+    <td><button class="m-3 btn btn-danger btn-del" id = "<?php echo $data["cart_id"]; ?>">Delete</button></td>
+  </tr>
+<?php endforeach; ?>
 
                     <?php
                       }
@@ -119,24 +238,16 @@
             </div>
         
             <div class="row g-4" style="margin-bottom: 2cm;">
-              <div class="col-lg-4">
-                <div class="coupon-area" style="margin-bottom: 1cm;">
-                  <div class="cart-coupon-input">
-                    <h5 class="coupon-title">Coupon Code</h5>
-                    <form class="coupon-input d-flex align-items-center">
-                      <input type="text" style="margin-right: 2px;" placeholder="Coupon Code">
-                      <button type="submit">Apply Code</button>
-                    </form>
-                  </div>
-                </div>
-              </div>
               <div class="col-lg-8 table-responsive">
                 <div class="coupon-area" style="margin-bottom: 1cm;">
                   <div class="cart-coupon-input">
-                    <h5 class="coupon-title">Total Payment</h5>
-                    <form class="coupon-input d-flex align-items-center">
-                      <input type="text" style="margin-right: 2px;" placeholder="Coupon Code">
-                    </form>
+                    <h5 class="coupon-title">Total Payment
+
+                        <?php 
+                        $totalPayment = $shop->calculate_total([1]);
+                        echo $totalPayment;
+                        ?>
+                    </h5>
                   </div>
                 <div class="cart-btn-group">
                     <a href="shop.php" class="btn btn-secondary btn-lg" style="margin-right: 15px;">Continue Shopping</a>
