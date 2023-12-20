@@ -66,6 +66,7 @@
 
                 <div class="register-link">
                     <p>Don't have an account? <a href="signup.php">Register</a></p>
+                    <p><a href="home.php">Back to Home <i class="fa fa-home"></i></a></p>
                 </div>
             </form>
         </div>
