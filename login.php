@@ -9,6 +9,7 @@
         <title>Bark and Meow - Login</title>
         <link rel="stylesheet" href="style.css">
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
     <?php
@@ -65,7 +66,7 @@
                 <button type="submit" class="btn" id="submit" name="submit">Login</button>
 
                 <div class="register-link">
-                    <p>Don't have an account? <a href="signup.php">Register</a></p>
+                    <p>Don't have an account? <a href="signup.php">Register</a></p><br>
                     <p><a href="home.php">Back to Home <i class="fa fa-home"></i></a></p>
                 </div>
             </form>
