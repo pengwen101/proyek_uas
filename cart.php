@@ -1,10 +1,10 @@
 <?php 
  
- if (isset($_SESSION["username"])) {
-     $username = $_SESSION["username"];
- } else {
-     header("location: login.php");
- }
+//  if (isset($_SESSION["username"])) {
+//      $username = $_SESSION["username"];
+//  } else {
+//      header("location: login.php");
+//  }
 
 ?>
 
@@ -86,7 +86,7 @@
                     <?php
                       include("config.php");
 
-                      $query = mysqli_query($con, "SELECT cart.*, product.* FROM cart INNER JOIN product ON cart.product_id = product.product_id WHERE cust_id = '1'") or die("Error Occured");
+                      $query = mysqli_query($con, "SELECT cart.*, product.* FROM cart INNER JOIN product ON cart.product_id = product.id WHERE id_cust = '1'") or die("Error Occured");
 
                       if(mysqli_num_rows($query) > 0) {
                         while($fetch = mysqli_fetch_assoc($query)) {

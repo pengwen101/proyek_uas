@@ -1,15 +1,5 @@
 <?php
 
-/**  
- *  
- * This PayPal Checkout API handler class is a custom PHP library to handle the PayPal API calls.  
- *  
- * @class   PaypalCheckout  
- * @author  CodexWorld  
- * @link    https://www.codexworld.com  
- * @version 1.0  
- */  
-
 // Include the configuration file
 require_once 'config.php';
 
@@ -78,7 +68,7 @@ if(!empty($_POST['paypal_order_check']) && !empty($_POST['order_id'])) {
 
                 $payer_email_address = $payer['email_address'];
                 $payer_address = $payer['address'];
-                $payer_country_doe = !empty($payer_address['country_code'])?$payer_address['country_code']:'';
+                $payer_country_code = !empty($payer_address['country_code'])?$payer_address['country_code']:'';
             }
 
             if(!empty($order_id) && $order_status == 'COMPLETED'){
@@ -97,12 +87,12 @@ if(!empty($_POST['paypal_order_check']) && !empty($_POST['order_id'])) {
                     // Insert transaction data into the database
                     $sqlQ = "INSERT INTO transactions (item_number, item_name, item_price, payer_id, payer_name, payer_email, payer_country, merchant_id, merchant_email, order_id, transaction_id, paid_amount, payment_source, payment_status, created, modified) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,NOW())";
                     $stmt = $db->prepare($sqlQ);
-                    $stmt->bind_param("ssdsssssssssdssss", $item_number, $item_name, $itemPrice, $currency, $payer_id, $payer_full_name, $payer_email_address, $payer_country_code, $merchant_id, $payee_email_address, $order_id, $transaction_id, $amount_value, $currency_code, $payment_source, $payment_status, $order_time); 
+                    $stmt->bind_param("ssdsssssssssdssss", $item_number, $item_name, $itemPrice, $payer_id, $payer_full_name, $payer_email_address, $payer_country_code, $merchant_id, $payee_email_address, $order_id, $transaction_id, $amount_value, $payment_source, $payment_status, $order_time); 
                     $insert = $stmt->execute(); 
 
                     if($insert){ 
                         $payment_id = $stmt->insert_id; 
-                    } 
+                    }
                 }
 
                 if(!empty($payment_id)){ 

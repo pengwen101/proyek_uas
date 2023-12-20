@@ -14,15 +14,15 @@ require_once 'config.php';
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-   <script src="https://www.paypal.com/sdk/js?client-id=<?php echo PAYPAL_SANDBOX?PAYPAL_SANDBOX_CLIENT_ID:PAYPAL_PROD_CLIENT_ID; ?>"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <script src="https://www.paypal.com/sdk/js?client-id=<?php echo PAYPAL_SANDBOX?PAYPAL_SANDBOX_CLIENT_ID:PAYPAL_PROD_CLIENT_ID; ?>"></script>
         <link rel="stylesheet" href="payment_style.css">
     </head>
     <body>
         <div class="container">
             <div class="panel">
-                <div class="overlay hidden"><div class="overlay-content"><img src="css/loading gif" alt="Processing..."/></div></div>
+                <div class="overlay hidden"><div class="overlay-content"></div></div>
                 <div class="panel-heading">
                     <h3 class="panel-title">Charge <?php echo 'Rp '.$itemPrice; ?> with PayPal</h3>
                     <!-- Product Info -->
@@ -60,10 +60,10 @@ require_once 'config.php';
                                     "description": "<?php echo $itemName; ?>",
                                     "unit_amount": {
                                         "value": <?php echo $itemPrice; ?>
-                                    };
+                                    },
                                     "quantity": "1",
                                     "category": "DIGITAL_GOODS"
-                                }
+                                },
                             ]
                         }] 
                     });
@@ -79,7 +79,7 @@ require_once 'config.php';
                             method: 'POST',
                             headers: {'Accept': 'application/json'},
                             body: encodeFormData(postData)
-                        });
+                        })
                         .then((response) => response.json())
                         .then((result) => {
                             if(result.status == 1) {
@@ -96,7 +96,7 @@ require_once 'config.php';
                             }
 
                             setProcessing(false);
-                        });
+                        })
                         .catch(error => console.log(error));
                     });
                 }
@@ -116,7 +116,7 @@ require_once 'config.php';
                 if (isProcessing) {
                     document.querySelector(".overlay").classList.remove("hidden");
                 } else {
-                    ocument.querySelector(".overlay").classList.add("hidden");
+                    document.querySelector(".overlay").classList.add("hidden");
                 }
             }
         </script>

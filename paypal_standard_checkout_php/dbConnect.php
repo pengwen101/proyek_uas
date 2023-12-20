@@ -1,5 +1,7 @@
 <?php
 
+require_once 'config.php';
+
 // Connect with the database
 $db = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
