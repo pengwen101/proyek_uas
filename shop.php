@@ -38,6 +38,72 @@ include 'includes/connect.php';
       bottom:0
     }
 
+    nav > div a {
+    color: white;
+}
+
+nav > div a:hover {
+    color: pink;
+    transition: all 0.5s;
+}
+
+nav > div .signup {
+    background-color: blue;
+    color: #fff;
+}
+
+nav > div .signup:hover {
+    background-color: cyan;
+    color: black;
+    transition: all 0.5s;
+}
+
+.offcanvas-title {
+    font-weight: bold;
+}
+
+.navbar .navbar-nav .nav-link:hover {
+    color: pink;
+}  
+
+.navbar .navbar-nav .nav-link {
+  padding: 0.6em;
+  font-size: 1.2em;
+}
+
+.navbar .navbar-brand {
+  padding: 0 0.6em;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+footer {
+    background: linear-gradient(to right, #581845, #900C3F, #C70039, #FF5733, #FFC300);
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: white;
+}
+
+@media only screen and (min-width: 992px) {
+    .navbar {
+        padding: 0;
+    }
+    .navbar .navbar-nav .nav-link {
+        padding: 1em 0.7em;
+    }
+    .navbar .navbar-brand {
+        padding: 0 0.8em;
+    }
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+}
+
     </style>
 
 <script>
@@ -115,7 +181,7 @@ include 'includes/connect.php';
         <nav class="navbar navbar-dark bg-dark navbar-expand-lg navbar-fixed-top">
             <div class="container">
               <!-- Logo -->
-              <a class="navbar-brand fs-4" href="#">Bark & Meow <i class="fa-solid fa-paw"></i></a>
+              <a class="navbar-brand fs-4" href="home.php">Bark & Meow <i class="fa-solid fa-paw"></i></a>
               <!-- Toggle Button -->
               <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                 <span class="navbar-toggler-icon"></span>
@@ -131,24 +197,19 @@ include 'includes/connect.php';
                 <div class="offcanvas-body d-flex flex-column flex-lg-row p-4 p-lg-0">
                   <ul class="navbar-nav justify-content-center align-items-center flex-grow-1 pe-3">
                     <li class="nav-item mx-2">
-                      <a class="nav-link" aria-current="page" href="#">Home</a>
+                      <a class="nav-link" aria-current="page" href="home.php">Home</a>
                     </li>
                     <li class="nav-item mx-2">
-                      <a class="nav-link active">About</a>
+                      <a class="nav-link" href="aboutus.php">About</a>
                     </li>
                     <li class="nav-item mx-2">
-                      <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Services
-                      </a>
-                    </li>
-                    <li class="nav-item mx-2">
-                      <a class="nav-link">Shop</a>
+                      <a class="nav-link active">Shop</a>
                     </li>
                   </ul>
                   <!-- Login/Sign up -->
                   <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">
-                    <a href=""><i class="fa-solid fa-cart-shopping fs-5"></i></a>
-                    <a href="" class="signup text-decoration-none px-3 py-1 rounded-4">Login</a>
+                    <a href="cart.php"><i class="fa-solid fa-cart-shopping fs-5"></i></a>
+                    <a href="login.php" class="signup text-decoration-none px-3 py-1 rounded-4">Login</a>
                   </div>
                 </div>
               </div>
@@ -156,7 +217,10 @@ include 'includes/connect.php';
           </nav>
       </header>
 
-      <div class = "container-xxl p-4 ps-5" style = "background-color: beige">
+      <div id="top">.</div>
+      <a href="#top" class="gotop"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+
+      <div class = "container-xxl p-4 ps-5" style = "background-color: beige; margin-top: 0.5cm;">
         <div class = "row align-items-center">
             <div class = "col-sm-7">
                 <h1 class = "h1" style = "font-weight: bold">Wide Variety of High Quality Pet's Care Waiting For You!</h1>
