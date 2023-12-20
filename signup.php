@@ -59,10 +59,6 @@
                 </div>
 
                 <div class="input-box">
-                    <input type="date" placeholder="Date of Birth" name="birth_date" autocomplete="off" required>
-                </div>
-
-                <div class="input-box">
                     <input type="text" placeholder="Address" name="address" autocomplete="off" required>
                     <i class='bx bxs-home'></i>
                 </div>
