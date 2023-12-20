@@ -194,17 +194,8 @@ include 'includes/connect.php';
                         </tr>
                     </thead>
                     <tbody>
-                    <?php
-                      include("config.php");
 
-                      $query = mysqli_query($con, "SELECT cart.*, product.* FROM cart INNER JOIN product ON cart.product_id = product.id WHERE id_cust = '$id_cust'") or die("Error Occured");
-
-                      if(mysqli_num_rows($query) > 0) {
-                        while($fetch = mysqli_fetch_assoc($query)) {
-
-                    ?>
-
-<?php foreach ($shop->show_cart([1])->fetchAll(PDO::FETCH_ASSOC) as $data): ?>
+<?php foreach ($shop->show_cart([$id_cust])->fetchAll(PDO::FETCH_ASSOC) as $data): ?>
   <tr>
     <td><img src="image/<?php echo $data["img"]; ?>" class="center"></td>
     <td><h5 style="text-align: center"><?php echo $data["name"]; ?></h5></td>
@@ -228,11 +219,6 @@ include 'includes/connect.php';
   </tr>
 <?php endforeach; ?>
 
-                    <?php
-                      }
-                    }
-  
-                    ?>
                     </tbody>
                   </table>
                 </div>
@@ -246,14 +232,16 @@ include 'includes/connect.php';
                     <h5 class="coupon-title">Total Payment
 
                         <?php 
-                        $totalPayment = $shop->calculate_total([1]);
+                        $totalPayment = $shop->calculate_total([$id_cust]);
                         echo $totalPayment;
                         ?>
                     </h5>
                   </div>
                 <div class="cart-btn-group">
                     <a href="shop.php" class="btn btn-secondary btn-lg" style="margin-right: 15px;">Continue Shopping</a>
-                    <a href="payment.php" class="btn btn-primary btn-lg">Proceed to Checkout</a>
+                    <?php echo
+                    "<a href='paypal_standard_checkout_php/payment.php?totalPayment=$totalPayment' class='btn btn-primary btn-lg'>Proceed to Checkout</a>"
+                    ?>
                 </div>
               </div>
             </div>

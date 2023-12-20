@@ -35,6 +35,7 @@ require_once 'config_paypal.php';
 
                     <!-- Set up a container element for the button -->
                     <div id="paypal-button-container"></div>
+                    <center><a class="btn" href="javascript:self.history.back()">Back</a></center>
                 </div>
             </div>
         </div>

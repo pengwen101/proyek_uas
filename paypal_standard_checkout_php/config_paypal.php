@@ -2,17 +2,15 @@
 
 session_start();
 
-if (isset($_GET["id_cust"]) && !empty($_GET["id_cust"])) {
-  $id_cust = $_GET["id_cust"];
+if (isset($_GET["totalPayment"]) && !empty($_GET["totalPayment"])) {
+  $totalPayment = $_GET["totalPayment"];
 } else {
   header("Location: login.php");
 }
 
-include '../config.php';
-
-$itemNumber = "SELECT "; 
-$itemName = "Demo Product"; 
-$itemPrice = 75;  
+$itemNumber = "A123"; 
+$itemName = "Cart Items"; 
+$itemPrice = $totalPayment;  
 
 define('PAYPAL_SANDBOX', TRUE);
 define('PAYPAL_SANDBOX_CLIENT_ID', 'AQqMCq5Hvr8tajmPvIjuHNBjYsh39VYTcE_cdbnTulBNGXmWA98zd5Cd4e0ouXIhMxCi75ppt-ZLx69N');

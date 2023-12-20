@@ -184,14 +184,12 @@ header {
       console.log(productId);
       console.log(quantity);
 
-      // Make an AJAX request to update the cart
       $.ajax({
-        url: "ajax_cart.php", // Replace with the actual path to your PHP script
+        url: "ajax_cart.php",
         method: "POST",
         data: { productId: productId, quantity: quantity },
         success: function(response) {
           console.log(response);
-          // Update the cart-qty element with the new quantity
           $("#cart-qty").text(response);
         },
         error: function() {
@@ -250,7 +248,7 @@ header {
       <div id="top">.</div>
       <a href="#top" class="gotop"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
 
-      <div class = "container-xxl p-4 ps-5" style = "background-color: beige; margin-top: 1.1cm;">
+      <div class = "container-xxl p-4 ps-5" style = "background-color: beige; margin-top: 0cm;">
         <div class = "row align-items-center">
             <div class = "col-sm-7">
                 <h1 class = "h1" style = "font-weight: bold">Wide Variety of High Quality Pet's Care Waiting For You!</h1>
@@ -267,9 +265,9 @@ header {
           <!--list produk ditaruh di sini-->
           <?php foreach ($shop->show_product()->fetchAll(PDO::FETCH_ASSOC) as $data): ?>
     <div class="col-sm-6 col-md-4 m-3" style="background-color: rgb(223, 223, 223); border-radius: 20px">
-        <img src="image/<?php echo $data["img"]; ?>" class="center">
+        <img src="image/<?php echo $data["img"]; ?>" class="center" style="margin-bottom: 10px;">
         <h5 style="text-align: center"><?php echo $data["name"]; ?></h5>
-        <p><?php echo $data["dsc"]; ?></p>
+        <center p><?php echo $data["dsc"]; ?></p>
         <h5><?php echo $data["price"]; ?></h5>
         <div class="row p-3">
             <div class="col-4">

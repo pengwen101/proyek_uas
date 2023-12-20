@@ -226,14 +226,14 @@
           <article class="card_article">
             <img src="image/aiko.jpg" class="card_img">
             <div class="card_data">
-              <span class="card_description">Daycare Assistant</span>
+              <span class="card_description">Assistant</span>
               <h2 class="card_title">Aiko</h2>
             </div>
           </article>
           <article class="card_article">
             <img src="image/amelia.png" class="card_img">
             <div class="card_data">
-              <span class="card_description">Groomer Manager</span>
+              <span class="card_description">Manager</span>
               <h2 class="card_title">Amelia</h2>
             </div>
           </article>
