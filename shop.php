@@ -240,7 +240,7 @@ header {
       <div id="top">.</div>
       <a href="#top" class="gotop"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
 
-      <div class = "container-xxl p-4 ps-5" style = "background-color: beige; margin-top: 0.5cm;">
+      <div class = "container-xxl p-4 ps-5" style = "background-color: beige; margin-top: 1.1cm;">
         <div class = "row align-items-center">
             <div class = "col-sm-7">
                 <h1 class = "h1" style = "font-weight: bold">Wide Variety of High Quality Pet's Care Waiting For You!</h1>
