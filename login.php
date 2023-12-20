@@ -60,7 +60,7 @@
                 </div>
 
                 <div class="remember-forgot">
-                    <label><input type="checkbox" name="remember_me">Remember me</label>
+                    <label><input type="checkbox" name="" onclick="show()">Show password</label>
                     <a href="forgotpw.php">Forgot password?</a>
                 </div>
 
@@ -72,6 +72,16 @@
                 </div>
             </form>
         </div>
+        <script type="text/javascript">
+            function show() {
+                var show = document.getElementById('password');
+                if (show.type == 'password') {
+                    show.type = 'text';
+                } else {
+                    show.type = 'password';
+                }
+            }
+        </script>
         <?php } ?>
     </body>
 </html>
