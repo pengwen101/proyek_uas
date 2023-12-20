@@ -106,6 +106,8 @@ include 'includes/connect.php';
       });
     });
 
+    //
+
 
     $(".btn-del").on("click", function(){
       var cartId = $(this).attr("id");
