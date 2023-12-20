@@ -1,3 +1,10 @@
+<?php
+session_start();
+
+$id_cust = $_SESSION['id_cust'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -69,91 +76,71 @@
         color: #ffffff;
       }
 
-      /* nav > div .signup {
+      nav > div a {
+        color: white;
+    }
+
+    nav > div a:hover {
+        color: pink;
+        transition: all 0.5s;
+    }
+
+    nav > div .signup {
         background-color: blue;
         color: #fff;
-      }
+    }
 
-      nav > div .signup:hover {
+    nav > div .signup:hover {
         background-color: cyan;
         color: black;
         transition: all 0.5s;
-      }
+    }
 
-      footer {
+    .offcanvas-title {
+        font-weight: bold;
+    }
+
+    .navbar .navbar-nav .nav-link:hover {
+        color: pink;
+    }  
+
+    .navbar .navbar-nav .nav-link {
+    padding: 0.6em;
+    font-size: 1.2em;
+    }
+
+    .navbar .navbar-brand {
+    padding: 0 0.6em;
+    font-size: 1.5em;
+    font-weight: bold;
+    }
+
+    footer {
         background: linear-gradient(to right, #581845, #900C3F, #C70039, #FF5733, #FFC300);
         bottom: 0;
         left: 0;
         width: 100%;
         color: white;
-      } */
-
-      nav > div a {
-    color: white;
-}
-
-nav > div a:hover {
-    color: pink;
-    transition: all 0.5s;
-}
-
-nav > div .signup {
-    background-color: blue;
-    color: #fff;
-}
-
-nav > div .signup:hover {
-    background-color: cyan;
-    color: black;
-    transition: all 0.5s;
-}
-
-.offcanvas-title {
-    font-weight: bold;
-}
-
-.navbar .navbar-nav .nav-link:hover {
-    color: pink;
-}  
-
-.navbar .navbar-nav .nav-link {
-  padding: 0.6em;
-  font-size: 1.2em;
-}
-
-.navbar .navbar-brand {
-  padding: 0 0.6em;
-  font-size: 1.5em;
-  font-weight: bold;
-}
-
-footer {
-    background: linear-gradient(to right, #581845, #900C3F, #C70039, #FF5733, #FFC300);
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    color: white;
-}
-
-@media only screen and (min-width: 992px) {
-    .navbar {
-        padding: 0;
     }
-    .navbar .navbar-nav .nav-link {
-        padding: 1em 0.7em;
-    }
-    .navbar .navbar-brand {
-        padding: 0 0.8em;
-    }
-}
 
-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 9999;
-}
+    @media only screen and (min-width: 992px) {
+        .navbar {
+            padding: 0;
+        }
+        .navbar .navbar-nav .nav-link {
+            padding: 1em 0.7em;
+        }
+        .navbar .navbar-brand {
+            padding: 0 0.8em;
+        }
+    }
 
+    header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 9999;
+    }
 
       .offcanvas-title {
         font-weight: bold;
@@ -218,7 +205,7 @@ header {
         text-align: center;
         line-height: 40px;
         color: white;
-        font-size: 18px;
+        font-size: 18pt;
         z-index: 9999;
       }
 
@@ -313,8 +300,19 @@ header {
                 </ul>
                 <!-- Login/Sign up -->
                 <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">
-                  <a href="cart.php"><i class="fa-solid fa-cart-shopping fs-5"></i></a>
-                  <a href="login.php" class="signup text-decoration-none px-3 py-1 rounded-4">Login</a>
+                <?php
+
+                echo "<a href='cart.php?id_cust=$id_cust'><i class='fa-solid fa-cart-shopping fs-5'></i></a>";
+
+                if(isset($_SESSION['id_cust'])) {
+                echo "<a href='login.php' class='signup text-decoration-none px-3 py-1 rounded-4'>Logout</a>";
+
+                session_destroy();
+                } else {
+                echo "<a href='login.php' class='signup text-decoration-none px-3 py-1 rounded-4'>Login</a>";
+                }
+
+                ?>
                 </div>
               </div>
             </div>

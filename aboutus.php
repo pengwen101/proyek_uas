@@ -48,9 +48,9 @@
                     </li>
                   </ul>
                   <!-- Login/Sign up -->
-                  <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">
+                  <!-- <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">
                     <a href="cart.php"><i class="fa-solid fa-cart-shopping fs-5"></i></a>
-                    <a href="login.php" class="signup text-decoration-none px-3 py-1 rounded-4">Login</a>
+                    <a href="login.php" class="signup text-decoration-none px-3 py-1 rounded-4">Login</a> -->
                   </div>
                 </div>
               </div>
