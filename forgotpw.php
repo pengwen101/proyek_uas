@@ -74,12 +74,11 @@
 
                 <div>
                     <button type="submit" class="btn" name="submit">Change Password</button>
-                    <button class="btn" href="login.php">Back</button>
                 </div>
 
-                <!-- <div class="register-link">
-                    <p>Already have an account? <a href="login.php">Login</a></p>
-                </div> -->
+                <div class="register-link">
+                    <p><a href="login.php">Back to Login</i></a></p>
+                </div>
             </form>
         </div>
         <?php } ?>
