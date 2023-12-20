@@ -110,7 +110,7 @@ header {
         height: 40px;
         border-radius: 10px;
         background-color: #ff7b00;
-        bottom: 30px;
+        bottom: 100px;
         right: 30px;
         text-decoration: none;
         text-align: center;
@@ -279,10 +279,10 @@ header {
         </div>
       </div>
 
-      <div class = "cart p-3">
+      <div class = "cart p-3" style="z-index: 9999;">
         Items in your cart: 
         <div id = "cart-qty"></div>
-        <button class = "btn btn-light" style = "float: right; overflow: hidden;">See my cart</button>
+        <a href="cart.php" class = "btn btn-light" style = "float: right; overflow: hidden;">See my cart</a>
       </div>
 
       <!-- Footer -->
@@ -322,7 +322,7 @@ header {
                   <span class="fa-li"><i class="fas fa-solid fa-location-dot"></i></span><span class="ms-2">New York, NY 10012, US</span>
                 </li>
                 <li class="mb-3">
-                  <span class="fa-li"><i class="fas fa-envelope"></i></span><span class="ms-2">info@example.com</span>
+                  <span class="fa-li"><i class="fas fa-envelope"></i></span><span class="ms-2">barknmeow@example.com</span>
                 </li>
                 <li class="mb-3">
                   <span class="fa-li"><i class="fas fa-phone"></i></span><span class="ms-2">+ 01 234 567 88</span>
