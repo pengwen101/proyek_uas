@@ -1,0 +1,122 @@
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    border-collapse: collapse;
+  }
+  
+  table {
+    width: 100%;
+  }
+  
+  th, td {
+    padding: 10px;
+  }
+  
+  .delete {
+    text-align: center;
+  }
+  
+  .food-name {
+    text-align: left;
+  }
+  
+  .unite-price, .discount-price, .quantity, .subtotal {
+    text-align: right;
+  }
+  
+  .quantity {
+    width: 50px;
+  }
+  
+  .subtotal {
+    font-weight: bold;
+  }
+  
+  body {
+    background-color: #FFF8E7;
+  }
+  
+  footer {
+    background: linear-gradient(to right, #581845, #900C3F, #C70039, #FF5733, #FFC300);
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: white;
+  }
+  
+  h1 {
+    font-size: 50px;
+    font-weight: 900;
+  }
+  
+  h5 {
+    font-weight: bold;
+    font-size: 22px;
+  }
+  
+  .cart-btn-group {
+    margin-top: 0.5cm;
+    float: inline-end;
+  }
+  
+  nav > div a {
+    color: white;
+  }
+  
+  nav > div a:hover {
+    color: pink;
+    transition: all 0.5s;
+  }
+  
+  nav > div .signup {
+    background-color: blue;
+    color: #fff;
+  }
+  
+  nav > div .signup:hover {
+    background-color: cyan;
+    color: black;
+    transition: all 0.5s;
+  }
+  
+  .offcanvas-title {
+    font-weight: bold;
+  }
+  
+  .navbar .navbar-nav .nav-link:hover {
+    color: pink;
+  }  
+  
+  .navbar .navbar-nav .nav-link {
+  padding: 0.6em;
+  font-size: 1.2em;
+  }
+  
+  .navbar .navbar-brand {
+  padding: 0 0.6em;
+  font-size: 1.5em;
+  font-weight: bold;
+  }
+  
+  @media only screen and (min-width: 992px) {
+    .navbar {
+        padding: 0;
+    }
+    .navbar .navbar-nav .nav-link {
+        padding: 1em 0.7em;
+    }
+    .navbar .navbar-brand {
+        padding: 0 0.8em;
+    }
+  }
+  
+  header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+  }
+
+  img {
+    height: 100px;
+  }
