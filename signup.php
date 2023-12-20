@@ -14,35 +14,40 @@
         if(isset($_POST['submit'])){
             $username = $_POST['username'];
             $email = $_POST['email'];
-            $birth_date = $_POST['birth_date'];
             $address = $_POST['address'];
             $phone_num = $_POST['phone_num'];
             $password = $_POST['password'];
             $confirmpw = $_POST['confirmpw'];
 
             $verify_email = mysqli_query($con, "SELECT email FROM customer WHERE email='$email'");
+            $verify_username = mysqli_query($con, "SELECT username FROM customer WHERE username='$username'");
 
             if(mysqli_num_rows($verify_email) != 0){
-                echo "<div class='message'>
-                        <p>This email is used. Try another one please!</p>
+                echo "<div class='wrapper'>
+                        <p>This email is used. Try another one please!</p><br>
+                        <a href='javascript:self.history.back()'><button class='btn'>Back</button>
                       </div>";
-                echo "<a href='javascript:self.history.back()'><button class='btn'>Back</button>";
+            } else if(mysqli_num_rows($verify_username) != 0){
+                echo "<div class='wrapper'>
+                        <p>This username is used. Try another one please!</p><br>
+                        <a href='javascript:self.history.back()'><button class='btn'>Back</button>
+                      </div>";
             } else if($confirmpw != $password) {
-                echo "<div class='message'>
-                        <p>Passwords do not match. Please try again.</p>
+                echo "<div class='wrapper'>
+                        <p>Passwords do not match. Please try again.</p><br>
+                        <a href='javascript:self.history.back()'><button class='btn'>Back</button>
                       </div>";
-                echo "<a href='javascript:self.history.back()'><button class='btn'>Back</button>";
             } else {
-                mysqli_query($con, "INSERT INTO customer(username,email,birth_date,address,phone_num,password) VALUES('$username','$email','$birth_date','$address','$phone_num','$password')") or die("Error Occurred");
+                mysqli_query($con, "INSERT INTO customer(username,email,address,phone_num,password) VALUES('$username','$email','$address','$phone_num','$password')") or die("Error Occurred");
 
-                echo "<div class='message' tabindex='-1'>
+                echo "<div class='wrapper' tabindex='-1'>
                         <div class='wrapper-content'>
                             <div class='wrapper-body'>
                             <p>Registration success 🥳</p>
                             </div>
-                        </div>
+                        </div><br>
+                        <a href='login.php'><button class='btn'>Login Now</button>
                     </div>";
-                echo "<a href='login.php'><button class='btn'>Login Now</button>";
             }
         } else {
         ?>
@@ -70,7 +75,7 @@
                 </div>
 
                 <div class="input-box">
-                    <input type="password" placeholder="Password" name="password" required>
+                    <input type="password" placeholder="Password" name="password" minlength="8" required>
                     <i class='bx bxs-lock-alt'></i>
                 </div>
 

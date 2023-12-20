@@ -25,7 +25,6 @@
             if(is_array($row) && !empty($row)){
                 $_SESSION['valid'] = $row['username'];
                 $_SESSION['email'] = $row['email'];
-                $_SESSION['birth_date'] = $row['birth_date'];
                 $_SESSION['address'] = $row['address'];
                 $_SESSION['phone_num'] = $row['phone_num'];
                 $_SESSION['password'] = $row['password'];
